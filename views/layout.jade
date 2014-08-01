@@ -1,0 +1,24 @@
+doctype
+html
+  head
+    title #{title} - VIBE Emitter
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+  body
+    .container
+      header
+        h1 VIBE Emitter
+
+        button(data-action='loop', data-running-text='Collecting data', data-notrunning-text='Paused')
+
+        .control
+          label VIBE ID
+          input(type='text', data-info='id', value='dev-vibe')
+
+
+      section.content
+        block content
+
+    script(src='/javascripts/jquery-2.1.1.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/main.js')

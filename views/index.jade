@@ -1,0 +1,22 @@
+extend layout
+block content
+  ul(class='nav nav-tabs' role='tablist')
+    li.active
+      a(href="#weather" role="tab" data-toggle="tab") Weather
+    li
+      a(href="#air" role="tab" data-toggle="tab") Air Quality
+
+  .tab-content
+    div(class="tab-pane active" id="weather")
+      fieldset(data-sensor='weather')
+        legend Temperature & Humidity
+          input(type='checkbox', checked='checked')
+          .control
+            label Temperature
+            input(data-reading='temperature', type='range', max='100', min='0', step='1', value='25')
+          .control
+            label Humidity
+            input(data-reading='humidity', type='range', max='100', min='0', step='1', value='50')
+
+    div(class="tab-pane" id="air")
+      p Air Quality
