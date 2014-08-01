@@ -22,7 +22,7 @@
 
   app.use(logger('dev'));
 
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
 
   app.use(stylus.middleware({
@@ -39,7 +39,7 @@
   });
 
   app.post('/report', function(req, res){
-    request.post(config.apiURL + '/v1/vibes/' + req.query.clientId + '?clientId=' + req.query.clientId, req.body);
+    request.post(config.apiURL + '/v1/vibes/' + req.query.clientId + '.json?clientId=' + req.query.clientId, {json: req.body});
     res.end("200");
   });
 
