@@ -41,19 +41,40 @@ $(function() {
   $('[data-action="loop"]').on('click', function() {
     var $this = $(this);
     var status = $this.attr('data-status');
+    $this.removeClass('btn-success btn-default');
 
     if (status === "running") {
       window.clearInterval(runningLoop);
-      $this.attr('data-status', 'notrunning');
-      $this.text($this.data('notrunning-text'));
+      $this.attr('data-status', 'notrunning')
+        .text($this.data('notrunning-text'))
+        .addClass('btn-default');
     } else {
       runningLoop = window.setInterval(loop, 5*1000);
       loop();
-      $this.attr('data-status', 'running');
-      $this.text($this.data('running-text'));
+      $this
+        .attr('data-status', 'running')
+        .text($this.data('running-text'))
+        .addClass('btn-success');
     }
   });
 
   $('[data-action="loop"]').trigger('click');
+
+
+  $('.slider-input').each(function() {
+    var $this = $(this);
+    $this.attr('data-slider-value', $this.val());
+  });
+
+  $('.slider-input')
+    .slider()
+    .on('slide', function(slideEvt) {
+      var $this = $(this);
+      $this.attr('value', slideEvt.value);
+    });
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $($(e.target).attr('href')).find('.slider-input').slider();
+  });
 
 });

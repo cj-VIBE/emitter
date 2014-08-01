@@ -6,17 +6,47 @@ block content
     li
       a(href="#air" role="tab" data-toggle="tab") Air Quality
 
+    li
+      a(href="#sound" role="tab" data-toggle="tab") Sound
+
   .tab-content
     div(class="tab-pane active" id="weather")
-      fieldset(data-sensor='weather')
-        legend Temperature & Humidity
+      div(data-sensor="weather")
+        h3.pane-title
           input(type='checkbox', checked='checked')
-          .control
-            label Temperature
-            input(data-reading='temperature', type='range', max='100', min='0', step='1', value='25')
-          .control
-            label Humidity
-            input(data-reading='humidity', type='range', max='100', min='0', step='1', value='50')
+          span Temperature & Humidity
+
+        .form-group
+          label Temperature (ºC)
+          input(data-reading='temperature', class="slider-input form-control", type='text', data-slider-max='50', data-slider-min='0', data-slider-step='1', value='25')
+        .form-group
+          label Humidity (%)
+          input(data-reading='humidity', class="slider-input form-control", type='text', data-slider-max='100', data-slider-min='0', data-slider-step='1', value='45')
 
     div(class="tab-pane" id="air")
-      p Air Quality
+      div(data-sensor="airQuality")
+        h3.pane-title
+          input(type='checkbox', checked='checked')
+          span Air Quality
+
+        .form-group
+          label Carbon Monoxide (ppm)
+          input(data-reading='co', class="slider-input form-control", type='text', data-slider-max='5', data-slider-min='0.5', data-slider-step='0.1', value='1.5')
+
+    div(class="tab-pane" id="sound")
+      div(data-sensor="sound")
+        h3.pane-title
+          input(type='checkbox', checked='checked')
+          span Sound
+
+        .form-group
+          label Level (db)
+          input(data-reading='level', class="slider-input form-control", type='text', data-slider-max='140', data-slider-min='0', data-slider-step='1', value='60')
+
+        .form-group
+          label Frequency (Hz)
+          input(data-reading='frequency', class="slider-input form-control", type='text', data-slider-max='20000', data-slider-min='0', data-slider-step='100', value='9000')
+
+        .form-group
+          label BPM (beats/minute)
+          input(data-reading='bpm', class="slider-input form-control", type='text', data-slider-max='220', data-slider-min='40', data-slider-step='1', value='120')
