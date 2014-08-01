@@ -29,7 +29,7 @@ $(function() {
       $sensor.find('[data-reading]').each(function(){
         var $reading = $(this);
 
-        sensorOutput[$reading.data('reading')] = parseInt($reading.val(), 10);
+        sensorOutput[$reading.data('reading')] = parseFloat($reading.val(), 10);
       });
 
       output[$sensor.data('sensor')] = sensorOutput;
